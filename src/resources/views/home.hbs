@@ -8,9 +8,13 @@
    <!-- Start of component -->
    <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
       <div id="header" class="flex"> 
-         <img class="w-45 rounded-md border-2 border-gray-300 overflow-auto" src="{{this.image}}" alt="{{this.name}}" />
+         <a href="/courses/{{this.slug}}">
+            <img class="w-45 rounded-md border-2 border-gray-300 overflow-auto" src="{{this.image}}" alt="{{this.name}}" />
+         </a>
          <div id="body" class="flex flex-col ml-5">
-            <h4 id="name" class="text-xl font-semibold mb-2">{{this.name}}</h4>
+            <a href="/courses/{{this.slug}}">
+               <h4 id="name" class="text-xl font-semibold mb-2">{{this.name}}</h4>
+            </a>
             <p id="job" class="text-gray-800 mt-2">{{this.discription}}</p>
             <div class="flex mt-5">
                <p class="ml-3">Buying</p>
