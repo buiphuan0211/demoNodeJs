@@ -3,6 +3,6 @@ const routes = express.Router();
 
 const coursesController = require('../app/controllers/CoursesController');
 
-routes.use('/:slug', coursesController.show);
+routes.get('/:slug', coursesController.show);
 
 module.exports = routes;
