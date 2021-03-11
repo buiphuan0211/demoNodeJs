@@ -1,0 +1,25 @@
+
+<h1 class="text-5xl text-purple-700 text-center my-8">Khóa học đã chọn</h1>
+<div class=" flex-nowrap ">
+   <!-- Start of component -->
+   <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
+      <div id="header" class="flex"> 
+         <a href="/courses/{{course.slug}}">
+            <img class="w-45 rounded-md border-2 border-gray-300 overflow-auto" src="{{course.image}}" alt="{{course.name}}" />
+         </a>
+         <div id="body" class="flex flex-col ml-5">
+            <a href="/course/{{course.slug}}">
+               <h4 id="name" class="text-xl font-semibold mb-2">{{course.name}}</h4>
+            </a>
+            <p id="job" class="text-gray-800 mt-2">{{course.discription}}</p>
+            <div class="flex mt-5">
+               <p class="ml-3">Buying</p>
+            </div>
+         </div>   
+      </div>
+   </div>
+   <!-- End of component -->
+  
+</div>
+
+   
