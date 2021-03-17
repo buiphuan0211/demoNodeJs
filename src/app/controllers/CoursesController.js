@@ -1,16 +1,19 @@
-
 const courseModel = require('../models/Course');
 const { mongooseToObject } = require('../../util/mongoose');
 const { mutipleMongooseToObject } = require('../../util/mongoose');
 class CoursesController {
-
-     // [post] /course/store
-     store(req, res, next) {
-            res.json(req.body);
-}
-      // [GET] /course/create
-      create(req, res, next) {
-            res.render('course/create');
+    // [post] /course/store
+    store(req, res, next) {
+            const formData = req.body;
+            const course = new courseModel(formData);
+            course
+                .save()
+                .then(() => res.redirect('/courses'))
+                .catch((err) => {});
+        }
+        // [GET] /course/create
+    create(req, res, next) {
+        res.render('course/create');
     }
 
     // [GET] /course/:slug
@@ -26,7 +29,7 @@ class CoursesController {
             .catch((err) => next(err));
     }
 
-    // [GET]/course
+    // [GET]/courses
     coursePage(req, res, next) {
         courseModel
             .find({}) // promise
