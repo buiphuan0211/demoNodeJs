@@ -6,19 +6,27 @@
 	<table class="text-left w-full ">
 		<thead class="bg-black flex text-white w-full">
 			<tr class="flex w-full mb-4">
-				<th class="p-4 w-1/4">One</th>
-				<th class="p-4 w-1/4">Two</th>
-				<th class="p-4 w-1/4">Three</th>
-				<th class="p-4 w-1/4">Four</th>
+				<th class="p-4 w-1/6">id</th>
+				<th class="p-4 w-1/6">Name</th>
+				<th class="p-4 w-1/6">Discription</th>
+				<th class="p-4 w-1/6">slug</th>
+				<th class="p-4 w-1/6">Date create</th>
 			</tr>
 		</thead>
         <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 50vh;">
+			{{#each course}}
 			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
+				<td class="p-4 w-1/6">{{sum @index 1}}</td>
+				<td class="p-4 w-1/6">{{this.name}}</td>
+				<td class="p-4 w-1/6">{{this.discription}}</td>
+				<td class="p-4 w-1/6">{{this.slug}}</td>
+				<td class="p-4 w-1/6">{{this.createdAt}}</td>
+				<td>
+					<a href="/courses/{{this._id}}/edit" class=' p-4  w-1/6 font-bold overflow-visible'>Update</a>
+					<a href="" class=' p-4  w-1/6 font-bold overflow-visible'>Delete</a>
+				</td>
 			</tr>
+			{{/each}}
 		</tbody>
 	</table>
 </div>

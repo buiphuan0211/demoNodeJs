@@ -10,6 +10,8 @@ const path = require('path');
 const route = require('./routes/routes_index');
 const db = require('./config/db/index');
 
+const methodOverride = require('method-override')
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
@@ -28,7 +30,16 @@ db.connect();
 route(app);
 
 // Template engine
-app.engine('.hbs', handlebars({ extname: '.hbs' }));
+app.engine('.hbs',
+    handlebars({
+        extname: '.hbs',
+        helpers: {
+            sum: (a, b) => a + b
+        }
+    }));
+
+app.use(methodOverride('_method'))
+
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
