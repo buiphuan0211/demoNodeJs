@@ -1,32 +1,28 @@
 
-<div class=" m-auto">
-	<h1 class="mb-8 text-7xl text-purple-700 text-center my-8">
-    Khóa học của tôi
-  </h1>
-	<table class="text-left w-full ">
-		<thead class="bg-black flex text-white w-full">
-			<tr class="flex w-full mb-4">
-				<th class="p-4 w-1/6">id</th>
-				<th class="p-4 w-1/6">Name</th>
-				<th class="p-4 w-1/6">Discription</th>
-				<th class="p-4 w-1/6">slug</th>
-				<th class="p-4 w-1/6">Date create</th>
-			</tr>
-		</thead>
-        <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 50vh;">
-			{{#each course}}
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/6">{{sum @index 1}}</td>
-				<td class="p-4 w-1/6">{{this.name}}</td>
-				<td class="p-4 w-1/6">{{this.discription}}</td>
-				<td class="p-4 w-1/6">{{this.slug}}</td>
-				<td class="p-4 w-1/6">{{this.createdAt}}</td>
-				<td>
-					<a href="/courses/{{this._id}}/edit" class=' p-4  w-1/6 font-bold overflow-visible'>Update</a>
-					<a href="" class=' p-4  w-1/6 font-bold overflow-visible'>Delete</a>
+<table class="table mt-2">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">Id</th>
+			<th scope="col">Name</th>
+			<th scope="col">Description</th>
+			<th scope="col">Level</th>
+			<th scope="col">Create Date</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+		{{#each course}}
+		<tr>
+			<th scope="row">{{sum @index 1}}</th>
+			<td>{{this.name}}</td>
+			<td>{{this.description}}</td>
+			<td>{{this.level}}</td>
+			<td>{{this.createdAt}}</td>
+			<td>
+				<a href="/courses/{{this._id}}/edit" class="btn ">Update</a>
+				<a href="/courses/{{this._id}}/edit" class="btn ">Update</a>
 				</td>
-			</tr>
-			{{/each}}
-		</tbody>
-	</table>
-</div>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>

@@ -1,25 +1,53 @@
-<div class="w-full">
-    <nav class="bg-purple-300 shadow-lg">
-        <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
-            <div class="flex justify-between items-center">
-               <div class="text-2xl font-bold text-gray-800 md:text-3xl">
-                    <a href="/">AAn</a>
-               </div>
-                <div class="md:hidden">
-                    <button type="button" class="block text-gray-800 hover:text-gray-700 focus:text-gray-700 focus:outline-none">
-                        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                            <path class="hidden" d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z"/>
-                            <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
-                <a class="mr-5 hover:text-gray-900 cursor-pointer border-b border-transparent hover:border-indigo-600" href="/courses/create">Đăng khóa học</a>
-                <a class="mr-5 hover:text-gray-900 cursor-pointer border-b border-transparent hover:border-indigo-600" href="/me/stored/courses">Khóa học của tôi</a>
-                <a class="mr-5 hover:text-gray-900 cursor-pointer border-b border-transparent hover:border-indigo-600" href="/me/stored/news">Bài đăng của tôi</a>
-                <a class="hover:text-gray-900 cursor-pointer border-b border-transparent hover:border-indigo-600">Đăng xuất</a>
-            </nav>
+{{!-- <div class="w-full">
+  <nav class="bg-purple-300 shadow-lg">
+    <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
+      <div class="flex justify-between items-center">
+        <div class="text-2xl font-bold text-gray-800 md:text-3xl">
+          <a href="/">AAn</a>
         </div>
-    </nav>
-</div>
+        <div class="md:hidden">
+          <button type="button" class="block text-gray-800 hover:text-gray-700 focus:text-gray-700 focus:outline-none">
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path class="hidden"
+                d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z" />
+              <path
+                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+        <a class="mr-5 hover:text-gray-900 cursor-pointer border-b border-transparent hover:border-indigo-600"
+          href="/courses/create">Đăng khóa học</a>
+        <a class="mr-5 hover:text-gray-900 cursor-pointer border-b border-transparent hover:border-indigo-600"
+          href="/me/stored/courses">Khóa học của tôi</a>
+        <a class="mr-5 hover:text-gray-900 cursor-pointer border-b border-transparent hover:border-indigo-600"
+          href="/me/stored/news">Bài đăng của tôi</a>
+        <a class="hover:text-gray-900 cursor-pointer border-b border-transparent hover:border-indigo-600">Đăng xuất</a>
+      </nav>
+    </div>
+  </nav>
+</div> --}}
+
+{{!--Edit bootrap--}}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">TOIDEV</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav " style="margin-left: auto;"> {{!-- me-auto mb-2 mb-lg-0--}}
+          <a class="nav-link" href="/courses">Các khóa học</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/courses/create">Đăng khóa học</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/me/stored/courses">Khóa học của tôi</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
