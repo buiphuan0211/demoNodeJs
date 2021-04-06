@@ -1,14 +1,48 @@
-const courseModel = require('../models/Course');
-const { mongooseToObject } = require('../../util/mongoose');
-const { mutipleMongooseToObject } = require('../../util/mongoose');
+const courseModel = require("../models/Course");
+const { mongooseToObject } = require("../../util/mongoose");
+const { mutipleMongooseToObject } = require("../../util/mongoose");
 class CoursesController {
-  //[PUT] /courses/:id
-  update(req, res, next) {
+  // [GET]/courses
+  coursePage(req, res, next) {
     courseModel
-      .updateOne({ _id: req.params.id }, req.body)
-      .then(() => res.redirect('/me/stored/courses'))
+      .find({}) // promise
+      .then((courses) => {
+        res.render("course/coursePage", {
+          courses: mutipleMongooseToObject(courses),
+        });
+      })
+      .catch((err) => next(err));
+  }
+
+  // [GET] /courses/:slug
+  show(req, res, next) {
+    courseModel
+      .findOne({ slug: req.params.slugCourse })
+      .then((course) => {
+        res.render("course/show", {
+          course: mongooseToObject(course),
+        });
+        // res.json(course);
+      })
+      .catch((err) => next(err));
+  }
+
+  // [GET] /course/create
+  create(req, res, next) {
+    res.render("course/create");
+  }
+
+  // [post] /courses/store
+  store(req, res, next) {
+    // res.json(req.body)
+    const formData = req.body;
+    const course = new courseModel(formData);
+    course
+      .save()
+      .then(() => res.redirect("/courses"))
       .catch(next);
   }
+
   //[GET] /courses/:id/edit
   edit(req, res, next) {
     courseModel
@@ -21,44 +55,20 @@ class CoursesController {
       .catch(next);
   }
 
-  // [post] /courses/store
-  store(req, res, next) {
-    // res.json(req.body)
-    const formData = req.body;
-    const course = new courseModel(formData);
-    course.save()
-      .then(()=> res.redirect('/courses'))
+  //[PUT] /courses/:id
+  update(req, res, next) {
+    courseModel
+      .updateOne({ _id: req.params.id }, req.body)
+      .then(() => res.redirect("/me/stored/courses"))
       .catch(next);
   }
 
-  // [GET] /course/create
-  create(req, res, next) {
-    res.render('course/create');
-  }
-
-  // [GET] /courses/:slug
-  show(req, res, next) {
+  //[DELETE] /courses/:id
+  destroy(req, res, next) {
     courseModel
-      .findOne({ slug: req.params.slugCourse })
-      .then((course) => {
-        res.render('course/show', {
-          course: mongooseToObject(course),
-        });
-        // res.json(course);
-      })
-      .catch((err) => next(err));
-  }
-
-  // [GET]/courses
-  coursePage(req, res, next) {
-    courseModel
-      .find({}) // promise
-      .then((courses) => {
-        res.render('course/coursePage', {
-          courses: mutipleMongooseToObject(courses),
-        });
-      })
-      .catch((err) => next(err));
+      .deleteOne({ _id: req.params.id })
+      .then(() => res.redirect("back"))
+      .catch(next)
   }
 }
 

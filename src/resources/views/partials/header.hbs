@@ -38,14 +38,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav " style="margin-left: auto;"> {{!-- me-auto mb-2 mb-lg-0--}}
-          <a class="nav-link" href="/courses">Các khóa học</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/courses/create">Đăng khóa học</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="/me/stored/courses">Khóa học của tôi</a>
+      <ul class="navbar-nav " style="    margin-left: 87%;  font-weight: bolder;;">
+        <li class="dropdown show ">
+          <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <img src="https://avatar-redirect.appspot.com/google/108435042340185261660?size=400" alt=""
+              class="user-avatar" style="width:28px; height:28px; border-radius:50%; margin-right:4px;t">
+            Menu
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="/courses">Các khóa học</a>
+            <a class="dropdown-item" href="/courses/create">Đăng khóa học</a>
+            <a class="dropdown-item" href="/me/stored/courses">Khóa học của tôi</a>
+            <a class="dropdown-item" href="#">Đăng xuất</a>
+          </div>
         </li>
       </ul>
     </div>

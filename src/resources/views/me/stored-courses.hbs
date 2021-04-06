@@ -1,4 +1,3 @@
-
 <table class="table mt-2">
 	<thead class="thead-dark">
 		<tr>
@@ -7,7 +6,6 @@
 			<th scope="col">Description</th>
 			<th scope="col">Level</th>
 			<th scope="col">Create Date</th>
-			
 		</tr>
 	</thead>
 	<tbody>
@@ -20,9 +18,53 @@
 			<td>{{this.createdAt}}</td>
 			<td>
 				<a href="/courses/{{this._id}}/edit" class="btn ">Update</a>
-				<a href="/courses/{{this._id}}/edit" class="btn ">Update</a>
-				</td>
+				<a href="" class="btn " data-toggle="modal" data-target="#delete-course-modal"
+					data-id="{{this._id}}">Delete</a>
+			</td>
 		</tr>
 		{{/each}}
 	</tbody>
 </table>
+
+{{!-- confirm delete course--}}
+<div id="delete-course-modal" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Xóa khóa học</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>chắc chưa bạn?? Không Ctrl Z lại được đâu..</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+				<button id="btn-delete-course" type="button" class="btn btn-danger">Xóa bỏ</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<form name="delete-course-form" method="POST"></form>
+
+{{!--getId button delete--}}
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		var courseId;
+		var deleteForm = document.forms['delete-course-form'];
+		var btnDeleteCourse = document.getElementById('btn-delete-course');
+
+		$('#delete-course-modal').on('show.bs.modal', (event) => {
+			var button = $(event.relatedTarget);
+			courseId = button.data('id');
+		});
+
+
+		btnDeleteCourse.onclick = function() {
+			deleteForm.action ='/courses/'+courseId+ '?_method=DELETE';
+			deleteForm.submit();
+		}
+	});
+</script>
