@@ -70,6 +70,34 @@ class CoursesController {
             .then(() => res.redirect("back"))
             .catch(next);
     }
-}
+    //[PATCH] /courses/:id/restore
+    restore(req, res, next) {
+        courseModel
+            .restore({ _id: req.params.id })
+            .then(() => res.redirect("back"))
+            .catch(next);
+    }
 
+    //[DELETE] /courses/:id/force
+    forceDestroy(req, res, next) {
+        courseModel
+            .deleteOne({ _id: req.params.id })
+            .then(() => res.redirect("back"))
+            .catch(next);
+    }
+
+    //[POST] /courses/handle-form-actions
+    handleFormActions(req, res, next) {
+        switch (req.body.action) {
+            case "delete":
+                courseModel
+                    .delete({ _id: { $in: req.body.courseIds } })
+                    .then(() => res.redirect("back"))
+                    .catch(next);
+                break;
+            default:
+                res.message("Action invalid");
+        }
+    }
+}
 module.exports = new CoursesController();

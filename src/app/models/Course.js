@@ -19,7 +19,7 @@ const Course = new Schema(
 mongoose.plugin(slug);
 
 Course.plugin(mongoose_delete, {
-    deleteAt: true,
+    deletedAt : true ,
     overrideMethods: 'all'
 })
 
