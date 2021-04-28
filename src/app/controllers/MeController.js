@@ -2,10 +2,19 @@ const courseModel = require("../models/Course");
 const { mongooseToObject } = require("../../util/mongoose");
 const { mutipleMongooseToObject } = require("../../util/mongoose");
 const { render } = require("node-sass");
-class CoursesController {
-
+class MeController {
     storedCourses(req, res, next) {
-        Promise.all([courseModel.find({}), courseModel.countDocumentsDeleted()])
+        let courseQuery = courseModel.find({});
+
+        if (req.query.hasOwnProperty("_sort")) {
+            const isValidType = ["asc", "desc"].includes(req.query.type);
+            
+            courseQuery = courseQuery.sort({
+                [req.query.column]: isValidType ? req.query.type : "desc"
+            });
+        }
+
+        Promise.all([courseQuery, courseModel.countDocumentsDeleted()])
             .then(([courses, deletedCount]) =>
                 res.render("me/stored-courses", {
                     courses: mutipleMongooseToObject(courses),
@@ -46,4 +55,4 @@ class CoursesController {
     }
 }
 
-module.exports = new CoursesController();
+module.exports = new MeController();

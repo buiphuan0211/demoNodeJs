@@ -1,6 +1,6 @@
 <form name="container-form" method="POST" action="/courses/handle-form-actions">
 	<div>
-		<h3>Khóa học của tôi</h3>
+		<h3 class="title-h3">Khóa học của tôi</h3>
 		<a href="/me/trash/courses">Thùng rác ({{deletedCount}})</a>
 		<div class="mt-4 d-flex align-items-center">
 			<div class="form-check ">
@@ -21,10 +21,16 @@
 			<tr>
 				<th scope="col">#</th>
 				<th scope="col">Id</th>
-				<th scope="col">Name</th>
-				<th scope="col">Description</th>
-				<th scope="col">Level</th>
-				<th scope="col">Create Date</th>
+				<th scope="col">Name
+					{{{sortTable 'name' _sort}}}
+				
+				</th>
+				<th scope="col">Level
+						{{{sortTable 'level' _sort}}}
+				</th>
+				<th scope="col">Create Date
+						{{{sortTable 'createdAt' _sort}}}
+				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,7 +43,6 @@
 				</td>
 				<th scope="row">{{sum @index 1}}</th>
 				<td>{{this.name}}</td>
-				<td>{{this.description}}</td>
 				<td>{{this.level}}</td>
 				<td>{{this.createdAt}}</td>
 				<td>
