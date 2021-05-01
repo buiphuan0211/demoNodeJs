@@ -36,7 +36,7 @@ route(app);
 
 // Template engine
 app.engine(
-    ".hbs",
+    ".hbs", 
     handlebars({
         extname: ".hbs",
         helpers: require("./helpers/handlebars")
